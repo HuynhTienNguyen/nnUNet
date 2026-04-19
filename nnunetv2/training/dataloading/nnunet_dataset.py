@@ -128,8 +128,12 @@ class nnUNetDatasetBlosc2(nnUNetBaseDataset):
         dparams = {
             'nthreads': 1
         }
+        
         print(f"source_folder: {self.source_folder}")
-        print(f"identifier: {identifier}")
+        print(f"old identifier: {identifier}")
+        identifier = identifier.split('.nii.gz')[0]
+        print(f"old identifier: {identifier}")
+        
         data_b2nd_file = join(self.source_folder, identifier + '.b2nd')
         print(f"data_b2nd_file: {data_b2nd_file}")
 
