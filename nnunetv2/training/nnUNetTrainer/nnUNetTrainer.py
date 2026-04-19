@@ -717,6 +717,8 @@ class nnUNetTrainer(object):
                                   probabilistic_oversampling=self.probabilistic_oversampling)
 
         allowed_num_processes = get_allowed_n_proc_DA()
+        print("-----------------------------------------------------------------------------------------------------)
+        print(allowed_num_processes)
         if allowed_num_processes == 0:
             mt_gen_train = SingleThreadedAugmenter(dl_tr, None)
             mt_gen_val = SingleThreadedAugmenter(dl_val, None)
@@ -730,6 +732,8 @@ class nnUNetTrainer(object):
                                                       num_cached=max(3, allowed_num_processes // 4), seeds=None,
                                                       pin_memory=self.device.type == 'cuda',
                                                       wait_time=0.002)
+        
+        print("-----------------------------------------------------------------------------------------------------)
         # # let's get this party started
         _ = next(mt_gen_train)
         _ = next(mt_gen_val)
